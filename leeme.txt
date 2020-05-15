@@ -36,6 +36,4 @@ Las funciones de rebobinar y adelantar de catt solo funcionan con contenido de i
 
 Aclaración final: 
 Esto únicamente integra al menú de kodi la posibilidad de abrir los vídeos en un reproductor externo que tiene la funcionalidad de enviar contenido a chromecast. Alguno de estos reproductores funciona sin problemas con contenidos locales pero no logran reproducir contenido de intertnet, y otros tienen problemas con contenidos locales pero reproducen bien los vídeos en streaming. Por este motivo se han agregado varios reproductores externos. También hay que tener en cuenta que no todos (los que funcionan con contenido de internet) podrán abrir sin problemas cualquier enlace de cualquier canal. Hay muchos factores en juego. Debes testear que reproductor funciona mejor para cada addon y canal de contenidos que utilices. Las pruebas que yo realice fueron hechas en su mayoría con balandro. Si algo no va bien, intenta desactivar el firewall y hacer un flush de iptables, para comprobar que no sea esto lo que te impide enviar el contenido a chromecast.
-Estoy armando algo similar para android, pero no voy a hacerlo para windows. No tengo dualboot y no me interesa instalarlo.
-
 
