@@ -5,6 +5,8 @@
 
 #####################################################################
 
+chmod +x {install.sh,uninstall.sh,./config/kp2chcast}
+
 You need install:
 
 https://www.videolan.org
