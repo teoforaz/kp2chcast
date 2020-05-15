@@ -1,0 +1,32 @@
+#! /bin/bash
+
+# teoforaz - teoforaz@gmail.com - 14/5/2020 - version: 1.0
+# License : Distributed under the terms of GNU GPL version 3 or later
+
+CHROMECAST_IP=_YOUR_CHROMECAST_IP_HERE_
+
+case "$1" in
+play)
+catt -d $CHROMECAST_IP play
+;;
+pause)
+catt -d $CHROMECAST_IP pause
+;;
+stop)
+catt -d $CHROMECAST_IP stop & sleep 3 && killall -w vlc & killall -w mkchromecast & killall -w gnomecast
+;;
+toggle)
+catt -d $CHROMECAST_IP play_toggle
+;;
+rewind)
+catt -d $CHROMECAST_IP rewind $2
+;;
+ffwd)
+catt -d $CHROMECAST_IP ffwd $2
+;;
+*)
+echo "When kodi is playing video in chromecast: kp2chcast play | pause | stop | toggle | rewind 300 | ffwd 300 (300 is time in seconds). You also have shortcuts for this, search kodi in the menu applications or alt+F2."
+exit 1
+;;
+esac
+exit 0

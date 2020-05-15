@@ -1,0 +1,37 @@
+#####################################################################
+
+# teoforaz - teoforaz@gmail.com - 14/5/2020 - version: 1.0
+# License : Distributed under the terms of GNU GPL version 3 or later
+
+#####################################################################
+
+Instalar:
+
+https://www.videolan.org
+https://mkchromecast.com
+https://pypi.org/project/catt
+https://pypi.org/project/gnomecast
+
+También es necesario tener instalado ffmpeg, mencoder, y restricted-extras codecs.
+
+Abre el puerto 8010 tcp en el firewall.
+Si tienes problemas para enviar contenido al chromecast, tal vez estas reglas de iptables puedan ayudarte:
+
+# chromecast iptables rules
+export CHROMECAST_IP=_YOUR_CHROMECAST_IP_HERE_ # Adjust to the Chromecast IP in your local network
+iptables -A INPUT -s ${CHROMECAST_IP} -p udp -m multiport --sports 32768:61000 -m multiport --dports 32768:61000 -m comment --comment "Allow Chromecast UDP data (inbound)" -j ACCEPT
+iptables -A OUTPUT -d ${CHROMECAST_IP} -p udp -m multiport --sports 32768:61000 -m multiport --dports 32768:61000 -m comment --comment "Allow Chromecast UDP data (outbound)" -j ACCEPT
+iptables -A OUTPUT -d ${CHROMECAST_IP} -p tcp -m multiport --dports 8008:8009 -m comment --comment "Allow Chromecast TCP data (outbound)" -j ACCEPT
+iptables -A OUTPUT -d 239.255.255.250 -p udp --dport 1900 -m comment --comment "Allow Chromecast SSDP" -j ACCEPT
+iptables -A INPUT -p tcp --dport 8010 -s ${CHROMECAST_IP} -j ACCEPT -m comment --comment "LOCAL SERVER FOR CHROMECAST - VLC - CATT - MKCHROMECAST"
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+Sobre catt:
+CATT dispone de algunos comandos que te permiten tomar cierto control de chromecast desde la terminal. Ver catt --help por mas información.
+Las funciones de rebobinar y adelantar de catt solo funcionan con contenido de internet. No tengo idea del motivo.
+
+Aclaración final: 
+Esto únicamente integra al menú de kodi la posibilidad de abrir los vídeos en un reproductor externo que tiene la funcionalidad de enviar contenido a chromecast. Alguno de estos reproductores funciona sin problemas con contenidos locales pero no logran reproducir contenido de intertnet, y otros tienen problemas con contenidos locales pero reproducen bien los vídeos en streaming. Por este motivo se han agregado varios reproductores externos. También hay que tener en cuenta que no todos (los que funcionan con contenido de internet) podrán abrir sin problemas cualquier enlace de cualquier canal. Hay muchos factores en juego. Debes testear que reproductor funciona mejor para cada addon y canal de contenidos que utilices. Las pruebas que yo realice fueron hechas en su mayoría con balandro. Si algo no va bien, intenta desactivar el firewall y hacer un flush de iptables, para comprobar que no sea esto lo que te impide enviar el contenido a chromecast.
+Estoy armando algo similar para android, pero no voy a hacerlo para windows. No tengo dualboot y no me interesa instalarlo.
+
+

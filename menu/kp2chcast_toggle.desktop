@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Kodiplayer Play-Pause
+Exec=kp2chcast toggle
+Icon=kodi
+Terminal=false
+Type=Application
+Categories=Kodi;
+Comment=Play and pause kodi videoplayer in chromecast

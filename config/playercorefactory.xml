@@ -1,0 +1,61 @@
+<!-- teoforaz - teoforaz@gmail.com - 14/5/2020 - version: 1.0 -->
+<!-- License : Distributed under the terms of GNU GPL version 3 or later -->
+<playercorefactory>
+  <!-- <defaultplayer>VideoPlayer</defaultplayer> -->
+  <players>
+    <player name="Chromecast (local)"
+      type="ExternalPlayer"
+      audio="false"
+      video="true"
+    >
+    <filename>/usr/bin/cvlc</filename>
+    <args>--sout "#chromecast" --sout-chromecast-ip=_YOUR_CHROMECAST_IP_HERE_ --sout-chromecast-http-port=8010 --demux-filter=demux_chromecast --sout-chromecast-video --no-sout-chromecast-audio-passthrough --sout-chromecast-conversion-quality=0</args>
+    <hidexbmc>false</hidexbmc>
+    </player>
+    <player name="VLC (local)"
+      type="ExternalPlayer"
+      audio="false"
+      video="true"
+    >
+      <filename>/usr/bin/vlc</filename>
+      <!-- <args>- -fullscreen "{1}"</args> -->
+      <args>--sout "#chromecast" --sout-chromecast-ip=_YOUR_CHROMECAST_IP_HERE_ --sout-chromecast-http-port=8010 --demux-filter=demux_chromecast --sout-chromecast-video --no-sout-chromecast-audio-passthrough --sout-chromecast-conversion-quality=0</args>
+      <hidexbmc>true</hidexbmc>
+    </player>
+    <player name="CATT (internet)"
+      type="ExternalPlayer"
+      audio="false"
+      video="true"
+    >
+      <filename>/usr/local/bin/catt</filename>
+      <args>-d _YOUR_CHROMECAST_IP_HERE_ cast</args>
+      <hidexbmc>false</hidexbmc>
+    </player>
+    <player name="MKChromecast (internet)"
+      type="ExternalPlayer"
+      audio="false"
+      video="true"
+    >
+      <filename>/usr/bin/mkchromecast</filename>
+      <args>-p 8010 --encoder-backend ffmpeg --codec aac --video --source-url</args>
+      <hidexbmc>false</hidexbmc>
+    </player>
+    <player name="MKChromecast (local)"
+      type="ExternalPlayer"
+      audio="false"
+      video="true"
+    >
+      <filename>/usr/bin/mkchromecast</filename>
+      <args>-p 8010 --video -i</args>
+      <hidexbmc>false</hidexbmc>
+    </player>
+    <player name="Gnomecast (local)"
+      type="ExternalPlayer"
+      audio="false"
+      video="true"
+    >
+      <filename>/usr/local/bin/gnomecast</filename>
+      <hidexbmc>true</hidexbmc>
+    </player>
+  </players>
+</playercorefactory>
