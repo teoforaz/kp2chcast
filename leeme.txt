@@ -5,7 +5,11 @@
 
 #####################################################################
 
-Instalar:
+Instalación:
+
+chmod +x {install.sh,uninstall.sh,./config/kp2chcast} && ./install.sh
+
+Depende de:
 
 https://www.videolan.org
 https://mkchromecast.com
