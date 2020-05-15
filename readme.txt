@@ -36,6 +36,4 @@ The rewind and forward functions of catt only work with internet content. I have
 
 Final comment: 
 This only integrates into the kodi menu the possibility to open the videos in an external player that has the functionality to send content to chromecast. Some of these players work fine with local content but fail to play intertnet content, and others have problems with local content but play streaming videos well. For this reason several external players have been added. Also note that not all (those that work with internet content) will be able to open any link from any channel without problems. There are many factors. You should test which player works well for each addon and content channel you use. The tests I performed were mostly done with balandro. If something doesn't work, try disabling the firewall and flushing iptables, to make sure this is not what is blocking you from sending content to chromecast.
-I'm building something similar for android, but I'm not going to do it for windows. I don't have dualboot and I'm not interested in installing it.
-
 
